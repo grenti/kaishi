@@ -10,7 +10,7 @@ set -e
 pretty_print() {
   printf "\n%b\n" "$1"
 }
-# 
+#
 pretty_print "Here we go..."
 
 # So it begins
@@ -29,7 +29,7 @@ fi
 # Homebrew installation
 
 if ! command -v brew &>/dev/null; then
-  pretty_print "Installing Homebrew, an OSX package manager, follow the instructions..." 
+  pretty_print "Installing Homebrew, an OSX package manager, follow the instructions..."
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
   if ! grep -qs "recommended by brew doctor" ~/.zshrc; then
@@ -95,8 +95,8 @@ fi
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
-pretty_print "Installing rbenv-gem-rehash, we don't want to rehash everytime we add a gem..."
-  brew install rbenv-gem-rehash
+# pretty_print "Installing rbenv-gem-rehash, we don't want to rehash everytime we add a gem..."
+#  brew install rbenv-gem-rehash
 
 pretty_print "Installing ruby-build to install Rubies ..."
   brew install ruby-build
@@ -109,7 +109,7 @@ brew link openssl --force
 # Install ruby latest version
 ruby_version="$(curl -sSL https://raw.githubusercontent.com/IcaliaLabs/kaishi/master/latest_ruby)"
 
-pretty_print "Installing Ruby $ruby_version" 
+pretty_print "Installing Ruby $ruby_version"
   if [ "$ruby_version" = "2.1.1" ]; then
     curl -fsSL https://gist.github.com/mislav/a18b9d7f0dc5b9efc162.txt | rbenv install --patch 2.1.1
   else
@@ -132,8 +132,8 @@ pretty_print "Setup gemrc for default options"
 # Bundler installation
 pretty_print "Installing bundler..."
   gem install bundler
-# 
-pretty_print "Optimizing Bundler..." 
+#
+pretty_print "Optimizing Bundler..."
   number_of_cores=$(sysctl -n hw.ncpu)
   bundle config --global jobs $((number_of_cores - 1))
 
@@ -144,7 +144,7 @@ pretty_print "Installing Rails...finally!"
   gem install rails
 
 pretty_print "Installing mailcatcher gem...!"
-  gem install mailcatcher 
+  gem install mailcatcher
 
 pretty_print "Installing platter..."
   gem install platter
@@ -156,7 +156,7 @@ pretty_print "Installing pow to serve local rails apps like a superhero..."
   curl get.pow.cx | sh
 
 pretty_print "Installing NodeJs..."
-  brew install node 
+  brew install node
 
 pretty_print "Installing Grunt..."
   npm install -g grunt-cli
@@ -164,10 +164,10 @@ pretty_print "Installing Grunt..."
 #Install brew cask
 pretty_print "Installing cask to install apps"
 	brew install caskroom/cask/brew-cask
-	
+
 pretty_print "Installing launchrocket to manage your homebrew formulas like a champ!"
 	brew cask install launchrocket
-	
+
 #Install apps
 # List of apps we use at Icalia Labs
 apps=(
